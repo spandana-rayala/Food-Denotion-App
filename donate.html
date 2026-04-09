@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Donor Registration</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+  <form class="form">
+
+    <h2>Donor Registration</h2>
+
+    <!-- Personal Details -->
+    <input type="text" placeholder="Full Name" required>
+
+    <input type="email" placeholder="Email Address" required>
+
+    <input type="text" placeholder="Phone Number" required>
+
+    <!-- Address -->
+    <input type="text" placeholder="Address / Location" required>
+
+    <!-- Donor Type -->
+    <select required>
+      <option value="">Donor Type</option>
+      <option>Individual</option>
+      <option>Restaurant</option>
+      <option>NGO</option>
+    </select>
+
+    <!-- Password -->
+    <input type="password" placeholder="Create Password" required>
+
+    <input type="password" placeholder="Confirm Password" required>
+
+    <!-- Submit -->
+    <button type="submit" onclick="goTodonMod()">Register as Donor</button>
+    <script>
+      function goTodonMod(){
+        window.location.href = "donorDashboard.html";
+      }
+    </script>
+  </form>
+</div>
+
+</body>
+</html>

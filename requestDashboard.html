@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Request Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: url("https://images.unsplash.com/photo-1600891964599-f61ba0e24092") no-repeat center center/cover;
+      color: white;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .dashboard {
+      padding: 30px;
+    }
+
+    /* Summary */
+    .summary {
+      display: flex;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .box {
+      background: white;
+      color: black;
+      padding: 15px;
+      border-radius: 10px;
+      width: 200px;
+      text-align: center;
+    }
+
+    /* Profile */
+    .profile {
+      background: white;
+      color: black;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    /* Cards */
+    .cards {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: white;
+      color: black;
+      padding: 15px;
+      width: 240px;
+      border-radius: 10px;
+    }
+
+    .completed {
+      color: green;
+      font-weight: bold;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: orange;
+      border: none;
+      color: white;
+      margin-bottom: 20px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+    .top-buttons button {
+      margin-left: 10px;
+      padding: 8px 12px;
+      font-size: 18px;
+      border-radius: 8px;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="dashboard">
+
+  <h2>Welcome, Receiver 👋</h2>
+  <div class="top-buttons">
+    <button onclick="openNotifications()">🔔</button>
+    <button onclick="openSettings()">⚙️</button>
+  </div>
+  <!-- Summary -->
+  <div class="summary">
+    <div class="box" id="totalRequests"></div>
+    <div class="box" id="totalMeals"></div>
+    <div class="box" id="completedCount"></div>
+  </div>
+
+  <!-- Profile -->
+  <div class="profile">
+    <h3>Receiver Info</h3>
+    <p><b>Name:</b>Food For All Trust(NGO)</p>
+    <p><b>Location:</b> Hyderabad</p>
+    <p><b>Type:</b> NGO</p>
+  </div>
+
+  <!-- Button -->
+  <button onclick="goToRequest()">+ Request Meals</button>
+
+  <!-- Completed Requests -->
+  <h3>Completed Requests</h3>
+  <div id="requestList" class="cards"></div>
+
+</div>
+
+<script>
+
+const requests = [
+  {
+    meals: 30,
+    location: "Hyderabad",
+    date: "10 Jan 2026",
+    status: "Completed"
+  },
+  {
+    meals: 20,
+    location: "Warangal",
+    date: "15 Feb 2026",
+    status: "Completed"
+  }
+];
+
+const container = document.getElementById("requestList");
+
+let totalMeals = 0;
+let completedCount = 0;
+
+requests.forEach(r => {
+  totalMeals += r.meals;
+
+  const card = document.createElement("div");
+  card.classList.add("card");
+
+  card.innerHTML = `
+    <h3>${r.meals} Meals</h3>
+    <p><b>Location:</b> ${r.location}</p>
+    <p><b>Date:</b> ${r.date}</p>
+    <p class="completed"><b>Status:</b> ${r.status}</p>
+  `;
+
+  container.appendChild(card);
+  completedCount++;
+});
+
+// Summary
+document.getElementById("totalRequests").innerText =
+  "Total Requests: " + requests.length;
+
+document.getElementById("totalMeals").innerText =
+  "Meals Requested: " + totalMeals;
+
+document.getElementById("completedCount").innerText =
+  "Completed: " + completedCount;
+
+// Navigation
+function goToRequest() {
+  window.location.href = "requestForm.html";
+}
+</script>
+<button onclick="goToFeedback()">Give Feedback</button>
+
+<script>
+function goToFeedback() {
+  window.location.href = "feedback.html";
+}
+function openSettings() {
+  alert("Settings page coming soon ⚙️");
+}
+function openNotifications() {
+  alert("No new notifications 🔔");
+}
+</script>
+
+</body>
+</html>

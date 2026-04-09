@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Request Meals Registration</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <form class="form">
+
+    <h2>Request Meals Registration</h2>
+
+    <!-- Name -->
+    <input type="text" placeholder="Full Name / NGO Name" required>
+
+    <!-- Email -->
+    <input type="email" placeholder="Email Address" required>
+
+    <!-- Phone -->
+    <input type="text" placeholder="Contact Number" required>
+
+    <!-- Location -->
+    <input type="text" placeholder="Location / Address" required>
+
+    <!-- Type -->
+    <select required>
+      <option value="">Type</option>
+      <option>Individual</option>
+      <option>NGO</option>
+    </select>
+    <!-- Password (optional but recommended) -->
+    <input type="password" placeholder="Create Password">
+
+    <input type="password" placeholder="Confirm Password">
+
+    <!-- Submit -->
+    <button type="submit" onclick="goToreqDash()">Register to Request Meals</button>
+    <script>
+      function goToreqDash(){
+        window.location.href = "requestDashboard.html";
+      }
+    </script>
+  </form>
+</div>
+
+</body>
+</html>

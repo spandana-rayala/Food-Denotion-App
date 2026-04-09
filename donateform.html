@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Donate Meals</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: url("https://images.unsplash.com/photo-1600891964599-f61ba0e24092") no-repeat center center/cover;
+    }
+
+    .container {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form {
+      background: white;
+      padding: 25px;
+      width: 320px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
+    .row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .row div {
+      width: 50%;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: orange;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    /* SUCCESS POPUP */
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup-box {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      width: 350px;
+    }
+
+    .check {
+      font-size: 50px;
+      color: green;
+    }
+
+    .popup-box h2 {
+      margin: 10px 0;
+    }
+
+    .popup-box p {
+      color: #555;
+    }
+
+    .popup-buttons {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .popup-buttons button {
+      flex: 1;
+    }
+
+    .ok {
+      background: gray;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <form class="form" onsubmit="showPopup(event)">
+    <h2>Donate Meals</h2>
+
+    <input type="text" placeholder="Food Description (Optional)">
+    <input type="number" placeholder="Number of Meals" required>
+
+    <select required>
+      <option>Food Type</option>
+      <option>Veg</option>
+      <option>Non-Veg</option>
+    </select>
+
+    <div class="row">
+      <div>
+        <label>Cooking Time</label>
+        <input type="time">
+      </div>
+      <div>
+        <label>Expiry Time</label>
+        <input type="time">
+      </div>
+    </div>
+
+    <input type="text" placeholder="Pickup Location">
+    <input type="file">
+    <input type="text" placeholder="Contact Number">
+
+    <button type="submit">Submit Donation</button>
+  </form>
+
+</div>
+
+<!-- SUCCESS POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-box">
+    <div class="check">✔</div>
+    <h2>Thank You!</h2>
+    <p>Your donation has been successfully submitted 🎉</p>
+    <p>Volunteers will contact you soon.</p>
+
+    <div class="popup-buttons">
+      <button onclick="goToDashboard()">Back to Dashboard</button>
+      <button class="ok" onclick="closePopup()">OK</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function showPopup(event) {
+  event.preventDefault(); // stop form refresh
+  document.getElementById("popup").style.display = "flex";
+}
+
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+
+function goToDashboard() {
+  window.location.href = "donorDashboard.html";
+}
+</script>
+
+</body>
+</html>

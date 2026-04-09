@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Request Meals</title>
+  <style>
+
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: url("https://images.unsplash.com/photo-1600891964599-f61ba0e24092") no-repeat center center/cover;
+    }
+
+    .container {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form {
+      background: white;
+      padding: 25px;
+      width: 340px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
+    .row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .row div {
+      width: 50%;
+      text-align: left;
+    }
+
+    label {
+      font-size: 12px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: orange;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    /* POPUP */
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup-box {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      width: 350px;
+    }
+
+    .check {
+      font-size: 50px;
+      color: green;
+    }
+
+    .popup-buttons {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .ok {
+      background: gray;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <form class="form" onsubmit="showPopup(event)">
+    <h2>Request Meals</h2>
+
+    <input type="number" placeholder="Number of Meals Required" required>
+    <input type="text" placeholder="Location / Address" required>
+
+    <div class="row">
+      <div>
+        <label>Date</label>
+        <input type="date" required>
+      </div>
+      <div>
+        <label>Time</label>
+        <input type="time" required>
+      </div>
+    </div>
+
+    <select>
+      <option>Urgency Level</option>
+      <option>Low</option>
+      <option>Medium</option>
+      <option>High</option>
+    </select>
+
+    <input type="text" placeholder="Contact Number" required>
+
+    <button type="submit">Submit Request</button>
+  </form>
+
+</div>
+
+<!-- SUCCESS POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-box">
+    <div class="check">✔</div>
+    <h2>Request Sent!</h2>
+    <p>Your meal request has been successfully submitted 🎉</p>
+    <p>Nearby donors will respond soon.</p>
+
+    <div class="popup-buttons">
+      <button onclick="goToDashboard()">Back to Dashboard</button>
+      <button class="ok" onclick="closePopup()">OK</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function showPopup(event) {
+  event.preventDefault();
+  document.getElementById("popup").style.display = "flex";
+}
+
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+
+function goToDashboard() {
+  window.location.href = "requestDashboard.html";
+}
+</script>
+
+</body>
+</html>
